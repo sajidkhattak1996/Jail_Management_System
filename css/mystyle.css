@@ -1,0 +1,26 @@
+/* my colors code */
+/* colors variables */
+:root{
+    --bl: #2500E0;
+    --bl-light: #4A53E1;
+
+    --rd: #E31E33;
+    --rd-light: #FF6171;
+}
+
+
+.bg-bl{ background: var(--bl); }
+.bg-bl-light{ background: var(--bl-light); }
+
+.bg-rd{ background: var(--rd); }
+.bg-rd-light{ background: var(--rd-light); }
+
+
+.text-rd {  color: var(--rd) !important; }
+.text-bl {  color: var(--bl) !important; }
+.text-bl-light {  color: var(--bl-light) !important; }
+.text-rd-light {  color: var(--rd-light) !important; }
+
+#mainNav .navbar-nav .nav-item .nav-link.active {
+    color: var(--rd) !important;
+}
