@@ -78,7 +78,7 @@ nav ul ul{
 
 }
 
-table {
+/* table {
 margin: 0px;
   border-collapse: collapse;
   width: 100%;
@@ -96,7 +96,7 @@ tr:hover {background-color:#76D7C4;}
 th {
   background-color: #4CAF50;
   color: white;
-}
+} */
 
 .p-t-20 {
   padding-top: 20px;

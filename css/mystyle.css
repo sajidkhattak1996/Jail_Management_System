@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
 /* my colors code */
 /* colors variables */
 :root{
@@ -12,8 +15,8 @@
 .bg-bl{ background: var(--bl); }
 .bg-bl-light{ background: var(--bl-light); }
 
-.bg-rd{ background: var(--rd); }
-.bg-rd-light{ background: var(--rd-light); }
+.bg-rd{ background: var(--rd) !important;}
+.bg-rd-light{ background: var(--rd-light) !important; }
 
 
 .text-rd {  color: var(--rd) !important; }
@@ -24,3 +27,28 @@
 #mainNav .navbar-nav .nav-item .nav-link.active {
     color: var(--rd) !important;
 }
+
+#portfolio .hover_bl{ background: var(--bl) !important; }
+#portfolio .hover_rd{ color: var(--rd); }
+.hover_rd-light{ background: var(--rd-light); }
+.hover_bl-light{ background: var(--bl-light); }
+
+#navli li a{ color: var(--rd); }
+
+
+.top_header{
+    background: black;
+    border-bottom: 5px solid var(--rd);
+    
+}
+
+.top_header h1{
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 32px;
+
+}
+.nav_color ul li a { color: black !important;  }
+.nav_color ul li a:hover { color: var(--rd) !important;  }
+#mainNav{ background: rgba(7, 7, 214, 0.13) }
