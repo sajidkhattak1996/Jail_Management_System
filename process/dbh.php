@@ -11,4 +11,10 @@ if(!$conn){
 	echo "Databese Connection Failed";
 }
 
+// if ($conn -> connect_errno) {
+// 	echo "Failed to connect to MySQL Server: " . $mysqli -> connect_error;
+// 	exit();
+//   }
+
+
 ?>
