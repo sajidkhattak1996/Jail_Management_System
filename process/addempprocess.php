@@ -2,17 +2,19 @@
 
 require_once ('dbh.php');
 
-$firstname = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
+$name = $_POST['name'];
+$father_name = $_POST['father_name'];
+
+$Designation = $_POST['Designation'];
 $contact = $_POST['contact'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
-$nid = $_POST['nid'];
-$dept = $_POST['dept'];
+
+$birthday = $_POST['birthday'];
 $degree = $_POST['degree'];
-$salary = $_POST['salary'];
-$birthday =$_POST['birthday'];
+$email = $_POST['email'];
+
+$name_of_jail =$_POST['name_of_jail'];
 //echo "$birthday";
 $files = $_FILES['file'];
 $filename = $files['name'];

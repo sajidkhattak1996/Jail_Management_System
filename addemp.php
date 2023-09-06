@@ -3,44 +3,42 @@
 
 <head>
    
+    <?php  
+        include 'process/header.html'; 
+    
+        require_once ('process/dbh.php');
+		
+        
+    ?>
 
-    <!-- Title Page-->
-    <title>Add Employee | Admin Panel</title>
 
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1>Welcome to Headquarter</h1>
-            <ul id="navli">
-                <li><a class="homeblack" href="aloginwel.php">HOME</a></li>
-                <li><a class="homered" href="addemp.php">Add Employee</a></li>
-                <li><a class="homeblack" href="viewemp.php">View Employee</a></li>
-                <li><a class="homeblack" href="viewundertransfer.php">Under Transfer to</a></li>
-                <li><a class="homeblack" href="assignproject.php">Project Status</a></li>
-                <li><a class="homeblack" href="salaryemp.php">Salary Table</a></li> 
-                <li><a class="homeblack" href="empleave.php">Employee Leave</a></li>
-                <li><a class="homeblack" href="alogin.html">Log Out</a></li>
-            </ul>
+
+<div class="top_header container-fluid px-5 pt-2 pb-1">
+		<h1>Welcome to Central Prison DIKhan</h1>
+	</div>
+
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg nav_color  s py-3 " id="mainNav">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand text-dark" href="#page-top">Empolyee Dashboard</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="addemp.php">Add Employee</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewemp.php">View Employee</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
+                        <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-    </header>
-    
-    <div class="divider"></div>
 
-
+	<div class="divider bg-rd"></div>
 
 
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
@@ -57,23 +55,42 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                     <input class="input--style-1" type="text" placeholder="Name" name="firstName" required="required">
+                                     <input class="input--style-1" type="text" placeholder="Name" name="name" required="required">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="Father Name" name="lastName" required="required">
+                                    <input class="input--style-1" type="text" placeholder="Father Name" name="father_name" required="required">
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
+                        <p>Designation</p>
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Designation" name="email" required="required">
-                        </div>
+                            <div class="rs-select2 js-select-simple ">
+                                <select name="Designation" id="d_id" required="required">
+                                    <option value="Chose Designation From List" disabled="disabled" selected="selected">Chose Designation From List</option>
+                                    <?php  
+                                    $designation_query= "SELECT * FROM `designation_list`";
+                                    $designation_records = mysqli_query($conn , $designation_query);
+
+                                    while($designation_list = mysqli_fetch_assoc($designation_records))
+                                    { ?>
+                                        <option value="<?php echo  $designation_list['D_id'];  ?>">
+                                            <?php  echo $designation_list['Designation_name'];  ?>
+                                        </option>
+
+                                   <?php }
+                                    
+                                    ?>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                         </div>
+
+                      
+
+
                         <p>Date of Birth</p>
                         <div class="row row-space">
                             <div class="col-2">
@@ -83,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="input-group">
+                                <div class="input-group p-2">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="gender">
                                             <option disabled="disabled" selected="selected">GENDER</option>
@@ -100,31 +117,58 @@
                         <div class="input-group">
                             <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" >
                         </div>
-
+<!-- 
                         <div class="input-group">
                             <input class="input--style-1" type="number" placeholder="NIC" name="nid" required="required">
-                        </div>
+                        </div> -->
 
                         
                          <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
                         </div>
-
+<!-- 
                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Name of Jail" name="dept" required="required">
-                        </div>
+                        </div> -->
+
+
+                        <p>Name of Jail</p>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple ">
+                                <select name="name_of_jail" id="d_id" required="required">
+                                    <option value="Chose Jail From List" disabled="disabled" selected="selected">Chose Jail From List</option>
+                                    <?php  
+                                    $jail_query= "SELECT * FROM `list_of_jail`";
+                                    $jail_records = mysqli_query($conn , $jail_query);
+
+                                    while($jail_list = mysqli_fetch_assoc($jail_records))
+                                    { ?>
+                                        <option value="<?php echo  $jail_list['J_id'];  ?>">
+                                            <?php  echo $jail_list['Name_of_jail'];  ?>
+                                        </option>
+
+                                   <?php }
+                                    
+                                    ?>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                         </div>
+
+
 
                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Qualification" name="degree" required="required">
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="date" placeholder="Date of Present Posting" name="salary">
+                            <input class="input--style-1" type="email" placeholder="Email" name="email" required="required">
                         </div>
 
-                        <div class="input-group">
+
+                        <!-- <div class="input-group">
                             <input class="input--style-1" type="file" placeholder="file" name="file">
-                        </div>
+                        </div> -->
 
 
 
