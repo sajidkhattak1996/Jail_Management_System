@@ -6,40 +6,45 @@ $name = $_POST['name'];
 $father_name = $_POST['father_name'];
 
 $Designation = $_POST['Designation'];
+$birthday = $_POST['birthday'];
+$gender = $_POST['gender'];
 $contact = $_POST['contact'];
 $address = $_POST['address'];
-$gender = $_POST['gender'];
+$name_of_jail =$_POST['name_of_jail'];
 
-$birthday = $_POST['birthday'];
+$cnic = $_POST['cnic'];
+$personal_no = $_POST['personal_no'];
 $degree = $_POST['degree'];
 $email = $_POST['email'];
 
-$name_of_jail =$_POST['name_of_jail'];
 //echo "$birthday";
-$files = $_FILES['file'];
-$filename = $files['name'];
-$filrerror = $files['error'];
-$filetemp = $files['tmp_name'];
-$fileext = explode('.', $filename);
-$filecheck = strtolower(end($fileext));
-$fileextstored = array('png' , 'jpg' , 'jpeg');
+// $files = $_FILES['file'];
+// $filename = $files['name'];
+// $filrerror = $files['error'];
+// $filetemp = $files['tmp_name'];
+// $fileext = explode('.', $filename);
+// $filecheck = strtolower(end($fileext));
+// $fileextstored = array('png' , 'jpg' , 'jpeg');
 
-if(in_array($filecheck, $fileextstored)){
+// echo $name."<br>";
+// echo $father_name."<br>";
+// echo $Designation."<br>";
+// echo $birthday."<br>";
+// echo $gender."<br>";
+// echo $contact."<br>";
+// echo $name_of_jail."<br>";
 
-    $destinationfile = 'images/'.$filename;
-    move_uploaded_file($filetemp, $destinationfile);
+// echo $cnic."<br>";
+// echo $personal_no."<br>";
+// echo $degree."<br>";
+// echo $email."<br>";
 
-    $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','$destinationfile')";
+// insert querry
+$emp_insert_query="INSERT INTO `employee_records` (`Personal_no`, `Cnic`, `Name`, `Father_name`, `D_id`, `Dob`, `Contact`, `Address`, `Qualification`, `Email`, `Jail_id`) VALUES ('$personal_no', '$cnic', '$name', '$father_name', '$Designation', '$birthday' , '$contact', '$address', '$degree', '$email', '$name_of_jail')";
 
-$result = mysqli_query($conn, $sql);
+$result_emp_insert = mysqli_query($conn ,$emp_insert_query);
 
-$last_id = $conn->insert_id;
-
-$sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
-$salaryQ = mysqli_query($conn, $sqlS);
-$rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
-
-if(($result) == 1){
+if(($result_emp_insert) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
@@ -47,7 +52,6 @@ if(($result) == 1){
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
-
 else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Failed to Registere')
@@ -55,28 +59,33 @@ else{
     </SCRIPT>");
 }
 
-}
 
-else{
 
-      $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','images/no.jpg')";
 
-$result = mysqli_query($conn, $sql);
 
-$last_id = $conn->insert_id;
+// if(in_array($filecheck, $fileextstored)){
 
-$sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
-$salaryQ = mysqli_query($conn, $sqlS);
-$rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
+//     $destinationfile = 'images/'.$filename;
+//     move_uploaded_file($filetemp, $destinationfile);
 
-if(($result) == 1){
+//     $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','$destinationfile')";
+
+// $result = mysqli_query($conn, $sql);
+
+// $last_id = $conn->insert_id;
+
+// $sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
+// $salaryQ = mysqli_query($conn, $sqlS);
+// $rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
+
+// if(($result) == 1){
     
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Registered')
-    window.location.href='..//viewemp.php';
-    </SCRIPT>");
-    //header("Location: ..//aloginwel.php");
-}
+//     echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Succesfully Registered')
+//     window.location.href='..//viewemp.php';
+//     </SCRIPT>");
+//     //header("Location: ..//aloginwel.php");
+// }
 
 // else{
 //     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -84,11 +93,41 @@ if(($result) == 1){
 //     window.location.href='javascript:history.go(-1)';
 //     </SCRIPT>");
 // }
-}
+
+// }
+
+// else{
+
+//       $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','images/no.jpg')";
+
+// $result = mysqli_query($conn, $sql);
+
+// $last_id = $conn->insert_id;
+
+// $sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
+// $salaryQ = mysqli_query($conn, $sqlS);
+// $rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
+
+// if(($result) == 1){
+    
+//     echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Succesfully Registered')
+//     window.location.href='..//viewemp.php';
+//     </SCRIPT>");
+//     //header("Location: ..//aloginwel.php");
+// }
+
+// // else{
+// //     echo ("<SCRIPT LANGUAGE='JavaScript'>
+// //     window.alert('Failed to Registere')
+// //     window.location.href='javascript:history.go(-1)';
+// //     </SCRIPT>");
+// // }
+// }
 
 
 
 
 
 
-?>
+// ?>

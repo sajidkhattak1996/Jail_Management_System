@@ -154,7 +154,21 @@
                                 <div class="select-dropdown"></div>
                             </div>
                          </div>
+                        
+                         
 
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="number" placeholder="CNIC" name="cnic" required="required">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="number" placeholder="Personal No" name="personal_no" required="required">
+                                </div>
+                            </div>
+                        </div>
 
 
                         <div class="input-group">
@@ -164,6 +178,8 @@
                         <div class="input-group">
                             <input class="input--style-1" type="email" placeholder="Email" name="email" required="required">
                         </div>
+
+                     
 
 
                         <!-- <div class="input-group">
