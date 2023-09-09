@@ -15,7 +15,7 @@ $name_of_jail =$_POST['name_of_jail'];
 $cnic = $_POST['cnic'];
 $personal_no = $_POST['personal_no'];
 $degree = $_POST['degree'];
-$email = $_POST['email'];
+
 
 //echo "$birthday";
 // $files = $_FILES['file'];
@@ -40,7 +40,7 @@ $email = $_POST['email'];
 // echo $email."<br>";
 
 // insert querry
-$emp_insert_query="INSERT INTO `employee_records` (`Personal_no`, `Cnic`, `Name`, `Father_name`, `D_id`, `Dob`, `Contact`, `Address`, `Qualification`, `Email`, `Jail_id`) VALUES ('$personal_no', '$cnic', '$name', '$father_name', '$Designation', '$birthday' , '$contact', '$address', '$degree', '$email', '$name_of_jail')";
+$emp_insert_query="INSERT INTO `employee_records` (`Personal_no`, `Cnic`, `Name`, `Father_name`, `D_id`, `Dob`, `Contact`, `Address`, `Qualification`, `Jail_id`) VALUES ('$personal_no', '$cnic', '$name', '$father_name', '$Designation', '$birthday' , '$contact', '$address', '$degree', '$name_of_jail')";
 
 $result_emp_insert = mysqli_query($conn ,$emp_insert_query);
 

@@ -52,3 +52,11 @@
 .nav_color ul li a { color: black !important;  }
 .nav_color ul li a:hover { color: var(--rd) !important;  }
 #mainNav{ background: rgba(7, 7, 214, 0.13) }
+
+.table_font{
+    font-size: 13px;
+    font-weight: 400;
+}
+.t_heading_bg{
+    background: #8a77ef82;
+}

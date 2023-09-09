@@ -13,9 +13,7 @@
 
 
 </head>
-
 <body>
-
 <div class="top_header container-fluid px-5 pt-2 pb-1">
 		<h1>Welcome to Central Prison DIKhan</h1>
 	</div>
@@ -175,9 +173,9 @@
                             <input class="input--style-1" type="text" placeholder="Qualification" name="degree" required="required">
                         </div>
 
-                        <div class="input-group">
+                        <!-- <div class="input-group">
                             <input class="input--style-1" type="email" placeholder="Email" name="email" required="required">
-                        </div>
+                        </div> -->
 
                      
 
