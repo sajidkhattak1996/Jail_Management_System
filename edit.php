@@ -11,34 +11,7 @@
         
     ?>
 
-
-</head>
-<body>
-<div class="top_header container-fluid px-5 pt-2 pb-1">
-		<h1>Welcome to Central Prison DIKhan</h1>
-	</div>
-
-		<!-- Navigation-->
-		<nav class="navbar navbar-expand-lg nav_color  s py-3 " id="mainNav">
-            <div class="container-fluid px-4 px-lg-5">
-                <a class="navbar-brand text-dark" href="#page-top">Empolyee Dashboard</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="addemp.php">Add Employee</a></li>
-                        <li class="nav-item"><a class="nav-link" href="viewemp.php">View Employee</a></li>
-                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
-                        <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-	<div class="divider bg-rd"></div>
-    
-    <?php  
+<?php  
         $id = (isset($_GET['id']) ? $_GET['id'] : '');
        
         $single_emp_query ="SELECT * , designation_list.D_id, designation_list.Designation_name, list_of_jail.J_id, list_of_jail.Name_of_jail FROM employee_records INNER JOIN designation_list ON employee_records.D_id=designation_list.D_id INNER JOIN list_of_jail ON employee_records.Jail_id=list_of_jail.J_id  WHERE employee_records.E_id=$id";
@@ -55,9 +28,10 @@
             $gender = $emp_record['gender'];
             $contact = $emp_record['Contact'];
             $address = $emp_record['Address'];
+            $gender = $emp_record['gender'];
             $name_of_jail =$emp_record['Name_of_jail'];
         
-            $cnic = $emp_record['Cnic '];
+            $cnic = $emp_record['Cnic'];
             $personal_no = $emp_record['Personal_no'];
             $degree = $emp_record['Qualification'];
 
@@ -65,11 +39,37 @@
             $J_id = $emp_record['J_id'];
 
         }
-
-
-    
     
     ?>
+
+
+</head>
+<body>
+<div class="top_header container-fluid px-5 pt-2 pb-1">
+		<h1><?php  echo $name_of_jail   ?></h1>
+	</div>
+
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg nav_color  s py-3 " id="mainNav">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand text-dark" href="#page-top"><?php   echo $name  ?></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="addemp.php">Add Employee</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewemp.php">View Employee</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
+                        <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+	<div class="divider bg-rd"></div>
+    
+
 
 
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
@@ -77,7 +77,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Registration Info</h2>
+                    <h2 class="title">Update Employee Information</h2>
                     <form action="process/addempprocess.php" method="POST" enctype="multipart/form-data">
 
 
@@ -86,12 +86,12 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                     <input class="input--style-1" type="text" placeholder="Name" name="name" required="required">
+                                     <input class="input--style-1" type="text" placeholder="Name" name="name" required="required" value="<?php  echo $name ?>">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="Father Name" name="father_name" required="required">
+                                    <input class="input--style-1" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $father_name ?>">
                                 </div>
                             </div>
                         </div>
@@ -100,9 +100,9 @@
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
                                 <select name="Designation" id="d_id" required="required">
-                                    <option value="Chose Designation From List" disabled="disabled" selected="selected">Chose Designation From List</option>
+                                    <option value="<?php echo $Designation ?>" disabled="disabled" selected="selected"><?php echo $Designation ?></option>
                                     <?php  
-                                    $designation_query= "SELECT * FROM `designation_list`";
+                                    $designation_query= "SELECT * FROM `designation_list` WHERE D_id !=$D_id";
                                     $designation_records = mysqli_query($conn , $designation_query);
 
                                     while($designation_list = mysqli_fetch_assoc($designation_records))
@@ -126,15 +126,16 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="date" placeholder="Date of Birth" name="birthday" required="required">
+                                    <input class="input--style-1" type="date" placeholder="Date of Birth" name="birthday" required="required" value="<?php echo $birthday  ?>">
                                    
                                 </div>
                             </div>
+                            
                             <div class="col-2">
                                 <div class="input-group p-2">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="gender">
-                                            <option disabled="disabled" selected="selected">GENDER</option>
+                                            <option disabled="disabled" selected="selected"><?php echo $gender ?></option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                             <option value="Other">Other</option>
@@ -146,7 +147,7 @@
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" >
+                            <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" value="<?php echo $contact ?>">
                         </div>
 <!-- 
                         <div class="input-group">
@@ -155,7 +156,7 @@
 
                         
                          <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
+                            <input class="input--style-1" type="text" placeholder="Address" name="address" required="required" value="<?php echo $address ?>">
                         </div>
 <!-- 
                         <div class="input-group">
@@ -167,9 +168,9 @@
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
                                 <select name="name_of_jail" id="d_id" required="required">
-                                    <option value="Chose Jail From List" disabled="disabled" selected="selected">Chose Jail From List</option>
+                                    <option value="<?php echo $name_of_jail ?>" disabled="disabled" selected="selected"><?php  echo $name_of_jail ?></option>
                                     <?php  
-                                    $jail_query= "SELECT * FROM `list_of_jail`";
+                                    $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id !=$J_id";
                                     $jail_records = mysqli_query($conn , $jail_query);
 
                                     while($jail_list = mysqli_fetch_assoc($jail_records))
@@ -177,6 +178,7 @@
                                         <option value="<?php echo  $jail_list['J_id'];  ?>">
                                             <?php  echo $jail_list['Name_of_jail'];  ?>
                                         </option>
+
 
                                    <?php }
                                     
@@ -191,19 +193,19 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="number" placeholder="CNIC" name="cnic" required="required">
+                                    <input class="input--style-1" type="number" placeholder="CNIC" name="cnic" required="required" value="<?php echo $cnic ?>">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="number" placeholder="Personal No" name="personal_no" required="required">
+                                    <input class="input--style-1" type="number" placeholder="Personal No" name="personal_no" required="required" value="<?php echo $personal_no ?>">
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Qualification" name="degree" required="required">
+                            <input class="input--style-1" type="text" placeholder="Qualification" name="degree" required="required" value="<?php echo $degree ?>">
                         </div>
 
                         <!-- <div class="input-group">

@@ -40,7 +40,7 @@ $degree = $_POST['degree'];
 // echo $email."<br>";
 
 // insert querry
-$emp_insert_query="INSERT INTO `employee_records` (`Personal_no`, `Cnic`, `Name`, `Father_name`, `D_id`, `Dob`, `Contact`, `Address`, `Qualification`, `Jail_id`) VALUES ('$personal_no', '$cnic', '$name', '$father_name', '$Designation', '$birthday' , '$contact', '$address', '$degree', '$name_of_jail')";
+$emp_insert_query="INSERT INTO `employee_records` (`Personal_no`, `Cnic`, `Name`, `Father_name`, `D_id`, `Dob`, `Contact`, `Address`, `gender` , `Qualification`, `Jail_id`) VALUES ('$personal_no', '$cnic', '$name', '$father_name', '$Designation', '$birthday' , '$contact', '$address', '$gender', '$degree', '$name_of_jail')";
 
 $result_emp_insert = mysqli_query($conn ,$emp_insert_query);
 
