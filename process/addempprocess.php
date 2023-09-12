@@ -48,15 +48,15 @@ if(($result_emp_insert) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//viewemp.php';
+    window.location.href='../viewemp.php';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
 else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Failed to Registere')
-    window.location.href='javascript:history.go(-1)';
-    </SCRIPT>");
+    // echo ("<SCRIPT LANGUAGE='JavaScript'>
+    // window.alert('Failed to Registere')
+    // window.location.href='javascript:history.go(-1)';
+    // </SCRIPT>");
 }
 
 
