@@ -40,8 +40,11 @@ require_once ('dbh.php');
     $degree_update = $_POST['degree'];
 
 
-    echo $_POST['Designation'];
     echo "test";
+    echo $_POST['Designation'];
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
     echo print_r($designation_id_update);
     echo "<br>";
     echo print_r($gender_update);
