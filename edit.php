@@ -105,7 +105,7 @@
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
                                 <select name="Designation" id="d_id" required="required">
-                                    <option value="<?php echo $D_id ?>" disabled="disabled" selected="selected"><?php echo $Designation ?></option>
+                                    <option value="<?php echo $D_id ?>"  selected="selected"><?php echo $Designation ?></option>
                                     <?php  
                                     $designation_query= "SELECT * FROM `designation_list` WHERE D_id !=$D_id";
                                     $designation_records = mysqli_query($conn , $designation_query);
@@ -140,7 +140,7 @@
                                 <div class="input-group p-2">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="gender">
-                                            <option disabled="disabled" selected="selected" ><?php echo $gender ?></option>
+                                            <option selected="selected" ><?php echo $gender ?></option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                             <option value="Other">Other</option>
@@ -173,7 +173,7 @@
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
                                 <select name="name_of_jail" id="d_id" required="required">
-                                    <option value="<?php echo $J_id ?>" disabled="disabled" selected="selected"><?php  echo $name_of_jail ?></option>
+                                    <option value="<?php echo $J_id ?>"  selected="selected"><?php  echo $name_of_jail ?></option>
                                     <?php  
                                     $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id !=$J_id";
                                     $jail_records = mysqli_query($conn , $jail_query);
