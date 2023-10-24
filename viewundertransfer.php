@@ -1,81 +1,98 @@
-<?php
-
-$servername = "localhost";
-$dBUsername = "root";
-$dbPassword = "";
-$dBName = "370project";
-
-$conn = mysqli_connect($servername, $dBUsername, $dbPassword, $dBName);
-
-if(!$conn){
-	echo "Databese Connection Failed";
-}
-
-?>
 <html>
 <head>
-	<title>View Employee |  Admin Panel | XYZ Corporation</title>
-	<link rel="stylesheet" type="text/css" href="styleview.css">
+	<!-- <link rel="stylesheet" type="text/css" href="styleview.css"> -->
+	<?php
+		require_once ('process/dbh.php');
+		$sql = "SELECT * from `employee` , `rank` WHERE employee.id = rank.eid";
+
+		//echo "$sql";
+		$result = mysqli_query($conn, $sql);
+
+		include 'process/header.html';  
+	?>
+	<title>View Under Transfer List</title>
+	
 </head>
 <body>
-	<header>
-		<nav>
-			<h1>Welcome to Headquarter</h1>
-			<ul id="navli">
-				<li><a class="homeblack" href="aloginwel.php">HOME</a></li>
-				<li><a class="homeblack" href="addemp.php">Add Employee</a></li>
-				<li><a class="homered" href="viewemp.php">View Employee</a></li>
-				<li><a class="homeblack" href="viewundertransfer.php">Under Transfer List</a></li>
-				<li><a class="homeblack" href="assignproject.php">Project Status</a></li>
-				<li><a class="homeblack" href="salaryemp.php">Salary Table</a></li>
-				<li><a class="homeblack" href="empleave.php">Employee Leave</a></li>
-				<li><a class="homeblack" href="alogin.html">Log Out</a></li>
-			</ul>
-		</nav>
-	</header>
-	
-	<body>
-        <div class="container">
-        	  <div class="row">
-        	  	  <div class="col-md-12">
-        	  	  	   <table class="table table-bordered table-hover">
-        	  	  	   	  <thead class="bg-success">
-        	  	  	   	  	   <tr>
-                                    <th>EMP_ID</th>
-        	  	  	   	  	   	    <th>Name</th>
-        	  	  	   	  	   	    <th>Father Name</th>
-        	  	  	   	  	   	    <th>DESIGNATION</th>
-        	  	  	   	  	   	    <th>NAME OF JAIL</th>
-        	  	  	   	  	   	    <th>UNDER TRANSFER TO</th>
-        	  	  	   	  	   	    <th>ORDER NO</th>
-        	  	  	   	  	   	    <th>ORDER DATE</th>
-                                    <th>Actions</th>
-        	  	  	   	  	   </tr>
-        	  	  	   	  </thead>
-        	  	  	   	  <tbody>
-        	  	  	   	  	<?php 
-        	  	  	   	  		$result= mysqli_query($conn,"SELECT * FROM transfer");
-        	  	  	   	  		 while ($row = mysqli_fetch_array($result)) {?>
-        	  	  	   	  	   <tr>
-                                    <td><?php echo $row['t_id'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['e_name'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['e_fname'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['e_design'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['e_jailname'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['e_undertransfer'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['order_no'];?></td>
-        	  	  	   	  	   	    <td><?php echo $row['order_date'];?></td>
+	<div class="top_header container-fluid px-5 pt-2 pb-1">
+		<h1>Welcome to Central Prison DIKhan</h1>
+	</div>
 
-                                    <td>
-                                        <a href="delete.php?s_id=<?php echo $row['s_id'];?>">Delete</a> |
-                                        <a href="edit.php?s_id=<?php echo $row['s_id'];?>">Edit</a>
-                                    </td>
-        	  	  	   	  	   </tr>
-        	  	  	   	  	   <?php }?>
-        	  	  	   	  </tbody>
-        	  	  	   </table>
-        	  	  </div>
-        	  </div>
-        </div>
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg nav_color  s py-3 " id="mainNav">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand text-dark" href="#page-top">List of Under Transfer Employees</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="addemp.php">Add Employee</a></li>
+                        <li class="nav-item"><a class="nav-link " href="viewemp.php">View Employee</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="viewundertransfer.php">Under Transfer List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
+                        <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+	<div class="divider bg-rd"></div>
+
+
+	<table class="table table-respansive table-hover table-bordered table-sm">
+			<thead class="t_heading_bg">
+				<tr>
+					<th scope="col">P. NO</th>
+					<th scope="col">Name with Parentage</th>
+					<th scope="col">Designation</th>
+					<th scope="col">Name of Jail</th>
+					<th scope="col">CNIC</th>
+					<th scope="col">Contact</th>
+					<th scope="col">Address</th>
+					<th scope="col">Gender</th>
+					<th scope="col">Date of Birth</th>
+					<th scope="col">Qualification</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody class="table_font">
+				<?php  
+					$view_emp_query = "SELECT * , designation_list.Designation_name, list_of_jail.Name_of_jail FROM employee_records INNER JOIN designation_list ON employee_records.D_id = designation_list.D_id INNER JOIN list_of_jail ON employee_records.Jail_id=list_of_jail.J_id";
+
+					$emp_result= mysqli_query($conn , $view_emp_query);
+				
+					while($r=mysqli_fetch_assoc($emp_result)){
+						?>
+						<tr>
+							<td scope="row"><?php  echo $r['Personal_no'];  ?></td>
+							<td><?php  echo $r['Name'];  ?> <b>S/O</b> <?php  echo $r['Father_name'];  ?></td>
+							<td><?php  echo $r['Designation_name']; ?></td>
+							<td><?php  echo $r['Name_of_jail']; ?></td>
+							<td><?php  echo $r['Cnic'];  ?></td>
+							<td><?php  echo $r['Contact'];  ?></td>
+							<td><?php  echo $r['Address'];  ?></td>
+							<td><?php  echo $r['gender'];  ?></td>
+							<td><?php  echo $r['Dob'];  ?></td>
+							<td><?php  echo $r['Qualification'];  ?></td>
+							<?php
+							echo "<td>
+									<a href=\"edit.php?id=$r[E_id]\">Edit</a> | 
+									<a href=\"transfer.php?id=$r[E_id]\">Under Transfer to </a> | 
+									<a href=\"delete.php?id=$r[E_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>
+								</td>"; ?>
+						</tr>
+
+						<?php
+					}
+
+
+
+				?>
+
+			</tbody>
+
+
+		</table>
+
 </body>
 </html>
