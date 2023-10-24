@@ -42,16 +42,16 @@ require_once ('dbh.php');
 
 
 
-    $emp_update_query ="UPDATE `employee_records` SET `Personal_no`='$personal_no_update',`Cnic`='$cnic_update',`Name`='$name_update',`Father_name`='$father_name_update',`D_id`='$designation_id_update',`Dob`='$birthday_update',`Contact`='$contact_update',`Address`='$address_update',`Qualification`='$degree_update',`Jail_id`='$name_of_jail_id_update' WHERE E_id=$id_original";
+    $emp_update_query ="UPDATE `employee_records` SET `Personal_no`='$personal_no_update',`Cnic`='$cnic_update',`Name`='$name_update',`Father_name`='$father_name_update',`D_id`='$designation_id_update',`Dob`='$birthday_update',`Contact`='$contact_update',`Address`='$address_update',`gender`='$gender_update',`Qualification`='$degree_update',`Jail_id`='$name_of_jail_id_update' WHERE E_id=$id_original";
 
         
     $update_emp_insert_result = mysqli_query($conn ,$emp_update_query);
 
     if(($update_emp_insert_result) == 1){
-        // echo ("<SCRIPT LANGUAGE='JavaScript'>
-        // window.alert('Succesfully Updated')
-        // window.location.href='../viewemp.php';
-        // </SCRIPT>");
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Updated')
+        window.location.href='../viewemp.php';
+        </SCRIPT>");
 
 
 

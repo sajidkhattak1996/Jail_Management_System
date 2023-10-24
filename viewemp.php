@@ -49,6 +49,7 @@
 					<th scope="col">CNIC</th>
 					<th scope="col">Contact</th>
 					<th scope="col">Address</th>
+					<th scope="col">Gender</th>
 					<th scope="col">Date of Birth</th>
 					<th scope="col">Qualification</th>
 					<th scope="col">Action</th>
@@ -70,6 +71,7 @@
 							<td><?php  echo $r['Cnic'];  ?></td>
 							<td><?php  echo $r['Contact'];  ?></td>
 							<td><?php  echo $r['Address'];  ?></td>
+							<td><?php  echo $r['gender'];  ?></td>
 							<td><?php  echo $r['Dob'];  ?></td>
 							<td><?php  echo $r['Qualification'];  ?></td>
 							<?php
