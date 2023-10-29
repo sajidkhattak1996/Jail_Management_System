@@ -77,7 +77,7 @@
 							<?php
 							echo "<td>
 									<a href=\"edit.php?id=$r[E_id]\">Edit</a> | 
-									<a href=\"transfer.php?id=$r[E_id]\">Under Transfer to </a> | 
+									<a href=\"undertransferto.php?id=$r[E_id]\">Under Transfer to </a> | 
 									<a href=\"delete.php?id=$r[E_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>
 								</td>"; ?>
 						</tr>

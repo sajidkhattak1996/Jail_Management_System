@@ -82,7 +82,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Update Employee Information</h2>
+                    <h2 class="title">Under Transfer To</h2>
                     <form id = "registration" action="process/updateempprocess.php?id=<?php echo $id; ?>" method="POST">
 
 
@@ -91,85 +91,42 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                     <input class="input--style-1" type="text" placeholder="Name" name="name" required="required" value="<?php  echo $name ?>">
+                                    <p>Name</p>
+                                     <input class="input--style-1 bg-transparent" type="text" placeholder="Name" name="name" required="required" value="<?php  echo $name ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $father_name ?>">
+                                    <p>Father Name</p>
+                                    <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $father_name ?>" disabled>
                                 </div>
                             </div>
                         </div>
 
-                        <p>Designation</p>
+                        <!-- to get the destination name  -->
+                        <?php  
+                            $designation_query= "SELECT * FROM `designation_list` WHERE D_id =$D_id";
+                            $designation_records = mysqli_query($conn , $designation_query);
+                            $designation_list = mysqli_fetch_assoc($designation_records)
+                        ?>
                         <div class="input-group">
-                            <div class="rs-select2 js-select-simple ">
-                                <select name="Designation" id="d_id" required="required">
-                                    <option value="<?php echo $D_id ?>"  selected="selected"><?php echo $Designation ?></option>
-                                    <?php  
-                                    $designation_query= "SELECT * FROM `designation_list` WHERE D_id !=$D_id";
-                                    $designation_records = mysqli_query($conn , $designation_query);
-
-                                    while($designation_list = mysqli_fetch_assoc($designation_records))
-                                    { ?>
-                                        <option value="<?php echo  $designation_list['D_id'];  ?>">
-                                            <?php  echo $designation_list['Designation_name'];  ?>
-                                        </option>
-
-                                   <?php }
-                                    
-                                    ?>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                         </div>
-
-                      
-
-
-                        <p>Date of Birth</p>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="date" placeholder="Date of Birth" name="birthday" required="required" value="<?php echo $birthday  ?>">
-                                   
-                                </div>
-                            </div>
-                            
-                            <div class="col-2">
-                                <div class="input-group p-2">
-                                    <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="gender">
-                                            <option selected="selected" ><?php echo $gender ?></option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p>Designation</p>
+                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $designation_list['Designation_name']; ?>" disabled>
                         </div>
-                        
+
+
+                         <!-- to get the name of the current jail -->
+                         <?php  
+                            $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id =$J_id";
+                            $jail_records = mysqli_query($conn , $jail_query);
+                            $jail_list = mysqli_fetch_assoc($jail_records);
+                        ?>
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" value="<?php echo $contact ?>">
+                            <p>Current Jail Name</p>
+                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" disabled>
                         </div>
-<!-- 
-                        <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="NIC" name="nid" required="required">
-                        </div> -->
 
-                        
-                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Address" name="address" required="required" value="<?php echo $address ?>">
-                        </div>
-<!-- 
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Name of Jail" name="dept" required="required">
-                        </div> -->
-
-
-                        <p>Name of Jail</p>
+                        <p>Under Transfer To</p>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
                                 <select name="name_of_jail" id="d_id" required="required">
@@ -193,45 +150,33 @@
                             </div>
                          </div>
                         
-                         
 
+
+
+
+
+
+
+
+                        
                         <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="number" placeholder="CNIC" name="cnic" required="required" value="<?php echo $cnic ?>">
+                                <div class="input-group ">
+                                    <p>Order Number</p>
+                                    <input class="input--style-1" type="text" placeholder="order number" name="birthday" required="required" >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="number" placeholder="Personal No" name="personal_no" required="required" value="<?php echo $personal_no ?>">
+                                    <p>Order Date</p>
+                                    <input class="input--style-1 p-2" type="date" placeholder="Date of Birth" name="birthday" required="required" value="<?php echo date("m/d/Y")  ?>">
                                 </div>
                             </div>
+
                         </div>
-
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Qualification" name="degree" required="required" value="<?php echo $degree ?>">
-                        </div>
-
-                        <!-- <div class="input-group">
-                            <input class="input--style-1" type="email" placeholder="Email" name="email" required="required">
-                        </div> -->
-
-                     
-
-
-                        <!-- <div class="input-group">
-                            <input class="input--style-1" type="file" placeholder="file" name="file">
-                        </div> -->
-
-
-
-
-
-
-
+      
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                            <button class="btn btn--radius btn--green" type="submit">Transfered</button>
                             
                         </div>
                     </form>
