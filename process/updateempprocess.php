@@ -25,23 +25,6 @@ require_once ('dbh.php');
     $degree_update = $_POST['degree'];
 
 
-    // echo "test";
-    // echo "<br>";
-    // echo  "designation = ".$_POST['Designation'];
-    // echo "<br>";
-    // echo "<br>";
-    // echo "jail id==".$name_of_jail_id_update;
-
-    // echo print_r($designation_id_update);
-    // echo "<br>";
-    // echo print_r($gender_update);
-    // echo "<br>";
-    // echo print_r($name_of_jail_id_update);
-
-//    echo print_r($name_of_jail_id_update);
-
-
-
     $emp_update_query ="UPDATE `employee_records` SET `Personal_no`='$personal_no_update',`Cnic`='$cnic_update',`Name`='$name_update',`Father_name`='$father_name_update',`D_id`='$designation_id_update',`Dob`='$birthday_update',`Contact`='$contact_update',`Address`='$address_update',`gender`='$gender_update',`Qualification`='$degree_update',`Jail_id`='$name_of_jail_id_update' WHERE E_id=$id_original";
 
         

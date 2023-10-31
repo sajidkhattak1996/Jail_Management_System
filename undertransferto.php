@@ -75,30 +75,25 @@
 	<div class="divider bg-rd"></div>
     
 
-
-
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Under Transfer To</h2>
-                    <form id = "registration" action="process/updateempprocess.php?id=<?php echo $id; ?>" method="POST">
-
-
-                        
+                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php  echo $D_id;  ?>" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <p>Name</p>
-                                     <input class="input--style-1 bg-transparent" type="text" placeholder="Name" name="name" required="required" value="<?php  echo $name ?>" disabled>
+                                     <input class="input--style-1 bg-transparent" type="text" placeholder="Name" name="name" required="required" value="<?php  echo $name ?>" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <p>Father Name</p>
-                                    <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $father_name ?>" disabled>
+                                    <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $father_name ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +106,7 @@
                         ?>
                         <div class="input-group">
                             <p>Designation</p>
-                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $designation_list['Designation_name']; ?>" disabled>
+                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="Designation" required="required" value="<?php  echo $designation_list['Designation_name']; ?>" readonly>
                         </div>
 
 
@@ -123,13 +118,13 @@
                         ?>
                         <div class="input-group">
                             <p>Current Jail Name</p>
-                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="father_name" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" disabled>
+                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="current_name_of_jail" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" readonly>
                         </div>
 
                         <p>Under Transfer To</p>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
-                                <select name="name_of_jail" id="d_id" required="required">
+                                <select name="under_transfer_name_of_jail" id="d_id" required="required">
                                     <option value="<?php echo $J_id ?>"  selected="selected"><?php  echo $name_of_jail ?></option>
                                     <?php  
                                     $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id !=$J_id";
@@ -150,26 +145,18 @@
                             </div>
                          </div>
                         
-
-
-
-
-
-
-
-
                         
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group ">
                                     <p>Order Number</p>
-                                    <input class="input--style-1" type="text" placeholder="order number" name="birthday" required="required" >
+                                    <input class="input--style-1" type="text" placeholder="order number" name="order_number" required="required" >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <p>Order Date</p>
-                                    <input class="input--style-1 p-2" type="date" placeholder="Date of Birth" name="birthday" required="required" value="<?php echo date("m/d/Y")  ?>">
+                                    <input class="input--style-1 p-2" type="date" placeholder="Order Date" name="order_date" required="required" value="<?php echo date("m/d/Y")  ?>">
                                 </div>
                             </div>
 

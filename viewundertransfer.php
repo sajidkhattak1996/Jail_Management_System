@@ -10,7 +10,7 @@
 
 		include 'process/header.html';  
 	?>
-	<title>View Under Transfer List</title>
+	<title>Under Transfer List</title>
 	
 </head>
 <body>
@@ -21,7 +21,7 @@
 		<!-- Navigation-->
 		<nav class="navbar navbar-expand-lg nav_color  s py-3 " id="mainNav">
             <div class="container-fluid px-4 px-lg-5">
-                <a class="navbar-brand text-dark" href="#page-top">List of Under Transfer Employees</a>
+                <a class="navbar-brand text-dark" href="#page-top">Under Transfer List</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
