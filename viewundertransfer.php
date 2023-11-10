@@ -42,29 +42,32 @@
 	<table class="table table-respansive table-hover table-bordered table-sm">
 			<thead class="t_heading_bg">
 				<tr>
-					<th scope="col">P. NO</th>
-					<th scope="col">Name with Parentage</th>
+					<th scope="col" title="Serial Number">S. NO</th>
+					<th scope="col" title="Name with Parent Name">Name/Parentage</th>
 					<th scope="col">Designation</th>
-					<th scope="col">Name of Jail</th>
-					<th scope="col">CNIC</th>
-					<th scope="col">Contact</th>
-					<th scope="col">Address</th>
-					<th scope="col">Gender</th>
-					<th scope="col">Date of Birth</th>
-					<th scope="col">Qualification</th>
-					<th scope="col">Action</th>
+					<th scope="col" title="Current Jail">C_Jail</th>
+					<th scope="col" title="Transfer Jail">T_Jail</th>
+					<th scope="col">Order No</th>
+					<th scope="col">Order Date</th>
+					<th scope="col">Release Status</th>
+					<th scope="col" title="Release Number">R_No</th>
+					<th scope="col" title="Release Date">R_Date</th>
+					<th scope="col">Arival Status</th>
+					<th scope="col" title="Arival Number">A_No</th>
+					<th scope="col" title="Arival Date">A_Date</th>
 				</tr>
 			</thead>
 			<tbody class="table_font">
 				<?php  
-					$view_emp_query = "SELECT * , designation_list.Designation_name, list_of_jail.Name_of_jail FROM employee_records INNER JOIN designation_list ON employee_records.D_id = designation_list.D_id INNER JOIN list_of_jail ON employee_records.Jail_id=list_of_jail.J_id";
+					$view_emp_query = "SELECT E_id, Name, Father_name, Name_of_jail, Designation_name FROM employee_records INNER JOIN designation_list ON employee_records.D_id=designation_list.D_id INNER JOIN list_of_jail ON employee_records.Jail_id=list_of_jail.J_id";
+
 
 					$emp_result= mysqli_query($conn , $view_emp_query);
 				
 					while($r=mysqli_fetch_assoc($emp_result)){
 						?>
 						<tr>
-							<td scope="row"><?php  echo $r['Personal_no'];  ?></td>
+							<td scope="row"><?php  echo $r['S_no'];  ?></td>
 							<td><?php  echo $r['Name'];  ?> <b>S/O</b> <?php  echo $r['Father_name'];  ?></td>
 							<td><?php  echo $r['Designation_name']; ?></td>
 							<td><?php  echo $r['Name_of_jail']; ?></td>

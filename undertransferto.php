@@ -81,7 +81,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Under Transfer To</h2>
-                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php  echo $D_id;  ?>" method="POST">
+                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
@@ -118,13 +118,14 @@
                         ?>
                         <div class="input-group">
                             <p>Current Jail Name</p>
-                            <input class="input--style-1 bg-transparent" type="text" placeholder="Father Name" name="current_name_of_jail" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" readonly>
+                            <input class="input--style-1 bg-transparent" type="text" placeholder="Current Jail Name" name="current_name_of_jail" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" readonly>
+
                         </div>
 
                         <p>Under Transfer To</p>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple ">
-                                <select name="under_transfer_name_of_jail" id="d_id" required="required">
+                                <select name="transfer_jail_id" id="tj_id" required="required">
                                     <option value="<?php echo $J_id ?>"  selected="selected"><?php  echo $name_of_jail ?></option>
                                     <?php  
                                     $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id !=$J_id";
