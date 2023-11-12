@@ -64,8 +64,8 @@
                         <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link " href="addemp.php">Add Employee</a></li>
                         <li class="nav-item"><a class="nav-link active" href="viewemp.php">View Employee</a></li>
-                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="view_arival.php">Under Arival</a></li>
                         <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
                     </ul>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Under Transfer To</h2>
-                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>" method="POST">
+                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php echo $D_id ?>" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">

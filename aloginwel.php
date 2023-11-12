@@ -30,7 +30,8 @@ $result = mysqli_query($conn, $sql);
                         <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="addemp.php">Add Employee</a></li>
                         <li class="nav-item"><a class="nav-link" href="viewemp.php">View Employee</a></li>
-                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Arival</a></li>
                         <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
                     </ul>
                 </div>

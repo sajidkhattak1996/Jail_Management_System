@@ -7,14 +7,14 @@ require_once ('dbh.php');
 // if(isset($_POST['update']))
 // {
 
-if(isset($_GET['E_id']) & isset($_GET['J_id']) ){
+if(isset($_GET['E_id']) & isset($_GET['J_id']) & isset($_GET['D_id']) ){
     // echo $_GET['E_id'];
 
     // $id_original = (isset($_GET['id']) ? $_GET['id'] : '');
 
     $employee_id = $_GET['E_id'];
     $current_jail_id = $_GET['J_id'];
-    // $designation_id = $_GET['D_id'];
+    $designation_id = $_GET['D_id'];
 
 
 // echo $_POST['name'];
@@ -42,7 +42,7 @@ if(isset($_GET['E_id']) & isset($_GET['J_id']) ){
     $order_date = $_POST['order_date'];
 
 
-    $under_transfer_query = "INSERT INTO `under_transfer_list`(`E_id`, `current_jail_id`, `transfer_jail_id`, `Transfer_order_no`, `Transfer_order_date`) VALUES ('$employee_id', '$current_jail_id', '$transfer_jail_id', '$order_no', '$order_date')";
+    $under_transfer_query = "INSERT INTO `under_transfer_list`(`E_id`,  `Designation_id`, `current_jail_id`, `transfer_jail_id`, `Transfer_order_no`, `Transfer_order_date`) VALUES ('$employee_id', '$designation_id' ,'$current_jail_id', '$transfer_jail_id', '$order_no', '$order_date')";
 
   
     $under_transfer_result = mysqli_query($conn ,$under_transfer_query);

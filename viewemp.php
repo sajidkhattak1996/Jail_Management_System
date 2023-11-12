@@ -28,8 +28,8 @@
                         <li class="nav-item"><a class="nav-link" href="aloginwel.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="addemp.php">Add Employee</a></li>
                         <li class="nav-item"><a class="nav-link active" href="viewemp.php">View Employee</a></li>
-                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="empleave.php">Employee Leave</a></li>
+                        <li class="nav-item"><a class="nav-link" href="viewundertransfer.php">Under Transfer</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="view_arival.php">Under Arival</a></li>
                         <li class="nav-item"><a class="nav-link" href="alogin.html">Log Out</a></li>
                     </ul>
                 </div>
