@@ -3,10 +3,10 @@
 	<!-- <link rel="stylesheet" type="text/css" href="styleview.css"> -->
 	<?php
 		require_once ('process/dbh.php');
-		$sql = "SELECT * from `employee` , `rank` WHERE employee.id = rank.eid";
+		// $sql = "SELECT * from `employee` , `rank` WHERE employee.id = rank.eid";
 
-		//echo "$sql";
-		$result = mysqli_query($conn, $sql);
+		// //echo "$sql";
+		// $result = mysqli_query($conn, $sql);
 
 		include 'process/header.html';  
 	?>
@@ -97,7 +97,7 @@
 								<?php
 								echo "<td>
 										<a href=\"edit.php?id=$r[E_id]\">Edit</a> | 
-										<a href=\"underarivalto.php?id=$r[E_id]\">Under Arival to </a> | 
+										<a href=\"underarivalto.php?sno=$r[S_no]\">Under Arival to </a> | 
 										<a href=\"delete.php?id=$r[E_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>
 									</td>"; ?>
 							</tr>

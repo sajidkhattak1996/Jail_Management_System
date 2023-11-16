@@ -12,10 +12,15 @@
     ?>
 
 <?php  
-        $id = (isset($_GET['id']) ? $_GET['id'] : '');
-
+        $id = (isset($_GET['sno']) ? $_GET['sno'] : '');
+        $sno = $_GET['sno'];
        
-        $single_emp_query ="SELECT * , designation_list.D_id, designation_list.Designation_name, list_of_jail.J_id, list_of_jail.Name_of_jail FROM employee_records INNER JOIN designation_list ON employee_records.D_id=designation_list.D_id INNER JOIN list_of_jail ON employee_records.Jail_id=list_of_jail.J_id  WHERE employee_records.E_id=$id";
+        $single_emp_query ="SELECT employee_records.Name,employee_records.Father_name,designation_list.Designation_name, list_of_jail.Name_of_jail, under_transfer_list.*
+        FROM under_transfer_list
+        INNER JOIN employee_records ON under_transfer_list.E_id=employee_records.E_id
+        INNER JOIN designation_list ON under_transfer_list.Designation_id=designation_list.D_id
+        INNER JOIN list_of_jail ON under_transfer_list.current_jail_id=list_of_jail.J_id
+        WHERE under_transfer_list.S_no='$sno'";
 
 
         // echo "id ====".$id;
@@ -27,21 +32,31 @@
             while($emp_record=mysqli_fetch_assoc($run_single_emp_query)){
                 $name = $emp_record['Name'];
                 $father_name = $emp_record['Father_name'];
-            
                 $Designation = $emp_record['Designation_name'];
-                $birthday = $emp_record['Dob'];
-                $gender = $emp_record['gender'];
-                $contact = $emp_record['Contact'];
-                $address = $emp_record['Address'];
-                $gender = $emp_record['gender'];
+
                 $name_of_jail =$emp_record['Name_of_jail'];
+
+                // echo $emp_record['Transfer_order_no'];
+                // echo $emp_record['Transfer_order_date'];
+                
+                $tranfer_order_no = $emp_record['Transfer_order_no'];
+                $tranfer_order_date = $emp_record['Transfer_order_date'];
             
-                $cnic = $emp_record['Cnic'];
-                $personal_no = $emp_record['Personal_no'];
-                $degree = $emp_record['Qualification'];
+
+                $current_jail_id=$emp_record['current_jail_id'];
+                $name_of_jail_query="SELECT Name_of_jail FROM list_of_jail WHERE J_id='$current_jail_id'";
+                $name_result=mysqli_query($conn ,$name_of_jail_query);
+                $current_jail_name=mysqli_fetch_assoc($name_result);
+
+
+                $transfer_jail_id=$emp_record['transfer_jail_id'];
+                $name_of_transfer_jail_query="SELECT Name_of_jail FROM list_of_jail WHERE J_id='$transfer_jail_id'";
+                $name_trasnfer_result=mysqli_query($conn ,$name_of_transfer_jail_query);
+                $transfer_jail_name=mysqli_fetch_assoc($name_trasnfer_result);
+                
     
-                $D_id = $emp_record['D_id'];
-                $J_id = $emp_record['J_id'];
+                $D_id = $emp_record['Designation_id'];
+                // $J_id = $emp_record['J_id'];
     
             };
         }
@@ -80,7 +95,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Under Transfer To</h2>
+                    <h2 class="title">Under Arival To</h2>
                     <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php echo $D_id ?>" method="POST">
 
                         <div class="row row-space">
@@ -110,57 +125,35 @@
                         </div>
 
 
-                         <!-- to get the name of the current jail -->
-                         <?php  
-                            $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id =$J_id";
-                            $jail_records = mysqli_query($conn , $jail_query);
-                            $jail_list = mysqli_fetch_assoc($jail_records);
-                        ?>
-                        <div class="input-group">
-                            <p>Current Jail Name</p>
-                            <input class="input--style-1 bg-transparent" type="text" placeholder="Current Jail Name" name="current_name_of_jail" required="required" value="<?php  echo $jail_list['Name_of_jail']; ?>" readonly>
-
-                        </div>
-
-                        <p>Under Transfer To</p>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple ">
-                                <select name="transfer_jail_id" id="tj_id" required="required">
-                                    <option value="<?php echo $J_id ?>"  selected="selected"><?php  echo $name_of_jail ?></option>
-                                    <?php  
-                                    $jail_query= "SELECT * FROM `list_of_jail` WHERE J_id !=$J_id";
-                                    $jail_records = mysqli_query($conn , $jail_query);
-
-                                    while($jail_list = mysqli_fetch_assoc($jail_records))
-                                    { ?>
-                                        <option value="<?php echo  $jail_list['J_id'];  ?>">
-                                            <?php  echo $jail_list['Name_of_jail'];  ?>
-                                        </option>
-
-
-                                   <?php }
-                                    
-                                    ?>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                         </div>
-                        
-                        
                         <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group ">
-                                    <p>Order Number</p>
-                                    <input class="input--style-1" type="text" placeholder="order number" name="order_number" required="required" >
+                                <div class="input-group">
+                                    <p>Current Jail Name</p>
+                                    <input class="input--style-1 bg-transparent" type="text" placeholder="Current Jail Name" name="current_name_of_jail" required="required" value="<?php  echo $current_jail_name['Name_of_jail']; ?>" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <p>Order Date</p>
-                                    <input class="input--style-1 p-2" type="date" placeholder="Order Date" name="order_date" required="required" value="<?php echo date("m/d/Y")  ?>">
+                                    <p>Transfer Jail Name</p>
+                                    <input class="input--style-1 bg-transparent" type="text" placeholder="Current Jail Name" name="current_name_of_jail" required="required" value="<?php  echo $transfer_jail_name['Name_of_jail']; ?>" readonly>
                                 </div>
                             </div>
+                        </div>
 
+       
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group ">
+                                    <p>Order Number</p>
+                                    <input class="input--style-1" type="number" placeholder="order number" name="order_number"  value="<?php  echo $tranfer_order_no; ?>" readonly >
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <p>Order Date <?php echo $emp_record['Transfer_order_date'] ?></p>
+                                    <input class="input--style-1 p-2" type="text" placeholder="Order Date" name="order_date"  value="<?php  echo $tranfer_order_date; ?>" readonly >
+                                </div>
+                            </div>
                         </div>
       
                         <div class="p-t-20">
