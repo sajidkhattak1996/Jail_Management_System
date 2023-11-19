@@ -96,7 +96,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Under Arival To</h2>
-                    <form id = "under_transfer" action="process/under_transfer_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php echo $D_id ?>" method="POST">
+                    <form id = "under_transfer" action="process/under_arivalto_process.php?E_id=<?php echo $id; ?>&J_id=<?php echo $J_id;  ?>&D_id=<?php echo $D_id ?>" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
@@ -150,14 +150,29 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <p>Order Date <?php echo $emp_record['Transfer_order_date'] ?></p>
-                                    <input class="input--style-1 p-2" type="text" placeholder="Order Date" name="order_date"  value="<?php  echo $tranfer_order_date; ?>" readonly >
+                                    <p>Order Date</p>
+                                    <input class="input--style-1 p-2" type="date" placeholder="Order Date" name="order_date"  value="<?php  echo $tranfer_order_date; ?>" readonly >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group ">
+                                    <p>Release Number</p>
+                                    <input class="input--style-1" type="number" placeholder="Release Number" name="release_number" >
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <p>Release Date</p>
+                                    <input class="input--style-1 p-2" type="date" placeholder="Release Date" name="release_date" >
                                 </div>
                             </div>
                         </div>
       
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Transfered</button>
+                            <button class="btn btn--radius btn--green" type="submit">Release Transfer</button>
                             
                         </div>
                     </form>
